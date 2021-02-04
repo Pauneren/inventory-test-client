@@ -34,10 +34,12 @@ const RemoveActionCell = ({ rowData, dataKey, ...props }) => {
     setShowConfirmModal(false);
   };
 
-  const confirmDeleteHandler = () => {
-    console.log("DELETING...");
+  const confirmDeleteHandler = async () => {
+    const apiHelper = new ApiHelper();
+    await apiHelper.deleteItem(rowData[dataKey]);
     setShowConfirmModal(false);
   };
+
 
   return (
     <React.Fragment>

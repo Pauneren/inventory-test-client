@@ -68,4 +68,29 @@ export default function ApiHelper() {
       return error.response;
     }
   };
+
+  //delete
+  this.deleteItem = async function (itemId) {
+    const storedData = JSON.parse(localStorage.getItem("userData"));
+    const token = storedData.token;
+
+    if (!token) {
+      console.log('Authentication error: User is not logged in!');
+      return;
+    }
+    
+    try {
+      
+      const URL = this.baseURL + "inventory/" + itemId;
+      const response = await Axios.delete(URL, {
+        headers: {"Authorization" : `Bearer ${token}`}
+      });
+
+      return response.data;
+
+    } catch (error) {
+      console.log(error.response);
+      return error.response;
+    }
+  };
 }
