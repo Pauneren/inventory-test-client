@@ -13,11 +13,11 @@ const EditActionCell = ({ rowData, dataKey, ...props }) => {
     alert(`Edit id:${rowData[dataKey]}`);
   }
   return (
-    <Cell {...props} className='link-group'>
+    <Cell {...props} className="link-group">
       <IconButton
-        appearance='subtle'
+        appearance="subtle"
         onClick={handleAction}
-        icon={<Icon icon='edit2' />}
+        icon={<Icon icon="edit2" />}
       />
     </Cell>
   );
@@ -34,26 +34,47 @@ const RemoveActionCell = ({ rowData, dataKey, ...props }) => {
     setShowConfirmModal(false);
   };
 
-  const confirmDeleteHandler = async () => {
+  const confirmDeleteHandler = async (dataList) => {
     const apiHelper = new ApiHelper();
     await apiHelper.deleteItem(rowData[dataKey]);
+
+    //TODO remove item from dataList
+
+    
+
+    // const updatedList = dataList.filter(function (obj) {
+    //   return obj.id !== rowData[dataKey];
+    // });
+
+    // console.log(updatedList);
+
+
+/*     const updatedList = dataList.filter(function (obj) {
+      return obj.id !== rowData[dataKey];
+    });
+
+    setDataList(updatedList); */
+
     setShowConfirmModal(false);
   };
 
+  const removeItemFromList = (id) => {
+    console.log(id)
+  }
 
   return (
     <React.Fragment>
       <Modal
         show={showConfirmModal}
         onCancel={cancelDeleteHandler}
-        header='Are you sure?'
-        footerClass='place_item__modal-actions'
+        header="Are you sure?"
+        footerClass="place_item__modal-actions"
         footer={
           <React.Fragment>
             <Button inverse onClick={cancelDeleteHandler}>
               CANCEL
             </Button>
-            <Button danger onClick={confirmDeleteHandler}>
+            <Button danger onClick={confirmDeleteHandler()}>
               REMOVE
             </Button>
           </React.Fragment>
@@ -61,11 +82,11 @@ const RemoveActionCell = ({ rowData, dataKey, ...props }) => {
       >
         Are you sure you want to delete this item? Deleting cannot be undone.
       </Modal>
-      <Cell {...props} className='link-group'>
+      <Cell {...props} className="link-group">
         <IconButton
-          appearance='subtle'
+          appearance="subtle"
           onClick={showDeleteWarningHandler}
-          icon={<Icon icon='trash2' />}
+          icon={<Icon icon="trash2" />}
         />
       </Cell>
     </React.Fragment>
@@ -96,7 +117,7 @@ const ItemList = (props) => {
   return (
     <React.Fragment>
       {isLoading && (
-        <div className='center'>
+        <div className="center">
           <LoadingSpinner />
         </div>
       )}
@@ -110,40 +131,40 @@ const ItemList = (props) => {
         >
           <Column width={200} fixed>
             <HeaderCell>Item Name</HeaderCell>
-            <Cell dataKey='item' />
+            <Cell dataKey="item" />
           </Column>
 
           <Column width={250}>
             <HeaderCell>Description</HeaderCell>
-            <Cell dataKey='description' />
+            <Cell dataKey="description" />
           </Column>
 
           <Column width={200}>
             <HeaderCell>Type of Item</HeaderCell>
-            <Cell dataKey='type_of_item' />
+            <Cell dataKey="type_of_item" />
           </Column>
 
           <Column width={200}>
             <HeaderCell>Number of items</HeaderCell>
-            <Cell dataKey='amount' />
+            <Cell dataKey="amount" />
           </Column>
 
           <Column width={200}>
             <HeaderCell>Price</HeaderCell>
-            <Cell dataKey='price' />
+            <Cell dataKey="price" />
           </Column>
 
           <Column width={550}>
             <HeaderCell>Image</HeaderCell>
-            <Cell dataKey='image' />
+            <Cell dataKey="image" />
           </Column>
 
-          <Column width={80} fixed='right'>
+          <Column width={80} fixed="right">
             <HeaderCell>Edit</HeaderCell>
             <EditActionCell dataKey={"id"} />
           </Column>
 
-          <Column width={80} fixed='right'>
+          <Column width={80} fixed="right">
             <HeaderCell>Remove</HeaderCell>
             <RemoveActionCell dataKey={"id"} />
           </Column>

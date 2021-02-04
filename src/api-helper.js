@@ -80,8 +80,7 @@ export default function ApiHelper() {
     }
     
     try {
-      
-      const URL = this.baseURL + "inventory/" + itemId;
+      const URL = `${this.baseURL}inventory/${itemId}`;
       const response = await Axios.delete(URL, {
         headers: {"Authorization" : `Bearer ${token}`}
       });
