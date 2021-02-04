@@ -42,7 +42,7 @@ const NewItem = () => {
     console.log('NewItem: 41');
     console.log(data);
 
-    fetch('https://aqueous-eyrie-60226.herokuapp.com/inventory', requestOptions)
+    fetch(process.env.REACT_APP_API_HOST +'inventory', requestOptions)
       .then((response) => {
         if (response.status < 200 || response.status >= 300) {
           const err = new Error();
@@ -64,10 +64,6 @@ const NewItem = () => {
       )
   }
 
-  const redirecting = () => {
-    <Link to="/itemlist">Update Iten</Link>
-
-  }
   return (
     <React.Fragment>
       <div className="signUp">
@@ -96,9 +92,7 @@ const NewItem = () => {
           <label>image:
           <input type="url" value={image} onChange={(e) => {setImage(e.target.value)}}/>
           </label>
-          <Link to="/items">
-            <Button inverse disabled={loading} onClick={createItem}>make new</Button>
-          </Link>
+          <Button inverse disabled={loading} onClick={createItem}>make new</Button>
         </form>
       </div>
     </React.Fragment>
