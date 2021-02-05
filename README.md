@@ -12,6 +12,14 @@ The inspiration for this web application is for creative people and artist to ha
 
 In the future we want to add more security and a better front-end infrastructure to hande all of the database objects. 
 
+## Front End - Source Origins
+
+This React Application is heavily influenced by Maximilian Schwarzmüller and his Udemy course, React, NodeJS, Express & MongoDB - The MERN Fullstack Guide: https://www.udemy.com/course/react-nodejs-express-mongodb-the-mern-fullstack-guide/
+
+The source structue and especially then handling of authentication and storing of JWT token is borrowed from Max. However the application is of course modified as needed to meet our project's goals.
+## Front End - Points of interest 
+Points of interest here are mainly found in three source files, the api-helper.js which handles in one location all communication with the backend API, the NewItem.js where new items are created and ItemList.js which lists all items that belong to the logged in user. These files are the only ones that include any code comments as other things are not of importance here and those are explained very well in the Udemy course.
+
 We hope you like it!
 
 ## Files
