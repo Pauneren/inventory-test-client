@@ -1,6 +1,5 @@
 import Button from "../../shared/components/FormElements/Button";
 import React, {useState} from "react";
-import { Link } from 'react-router-dom';
 
 const NewItem = () => {
   const [loading, setLoading] = useState(false);
