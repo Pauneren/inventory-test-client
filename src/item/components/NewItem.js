@@ -16,7 +16,7 @@ const NewItem = () => {
   function createItem() {
     const data = {
       item: item,
-      type_of_item: itemType,
+      itemType: itemType,
       description: description,
       date: date,
       amount: amount,
